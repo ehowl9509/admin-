@@ -4,17 +4,17 @@ package com.example.admin1.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"orderDetailList", "partner"})
 public class Item {
 
     @Id
@@ -45,6 +45,11 @@ public class Item {
 
     private String updatedBy;
 
-    private Long partnerId;
-    
+    //연관설정
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+    private List<OrderDetail> orderDetailList;
+
+
+    @ManyToOne
+    private Partner partner;
 }

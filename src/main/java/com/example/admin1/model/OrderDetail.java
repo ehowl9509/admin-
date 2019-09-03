@@ -4,11 +4,9 @@ package com.example.admin1.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -16,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@ToString(exclude = {"orderGroup", "item"})
 public class OrderDetail {
 
     @Id
@@ -38,4 +37,12 @@ public class OrderDetail {
 
     private String updatedBy;
 
+
+    //연관관계
+
+    @ManyToOne
+    private OrderGroup orderGroup;
+
+    @ManyToOne
+    private Item item;
 }

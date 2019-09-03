@@ -5,6 +5,7 @@ import com.example.admin1.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
@@ -42,8 +43,26 @@ public class UserRepositoryTest extends Admin1ApplicationTests {
 
 
     @Test
+    @Transactional
     public void read(){
         User user = userRepository.findByPhoneNumberOrderByIdDesc("010-4941-9509");
-        assertNotNull(user);
+        if(user != null) {
+            user.getOrderGroupList().stream().forEach(orderGroup -> {
+                System.out.println("수령인" + orderGroup.getRevName());
+                System.out.println(orderGroup.getStatus());
+                System.out.println(orderGroup.getArrivalDate());
+
+                orderGroup.getOrderDetailList().forEach(orderDetail -> {
+                    orderDetail.getStatus();
+                    orderDetail.getArrivalDate();
+                    orderDetail.getItem().getPartner().getCallCenter();
+                    orderDetail.getItem().getPartner().getCategory().getTitle();
+                });
+
+            });
+            assertNotNull(user);
+
+        }
+
     }
 }
