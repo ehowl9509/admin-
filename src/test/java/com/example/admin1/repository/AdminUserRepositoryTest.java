@@ -18,12 +18,12 @@ public class AdminUserRepositoryTest extends Admin1ApplicationTests {
     @Test
     public void create(){
         AdminUser adminUser = new AdminUser();
-        adminUser.setAccount("admin");
-        adminUser.setPassword("admin1");
-        adminUser.setStatus("regi");
-        adminUser.setRole("part");
-        adminUser.setCreatedAt(LocalDateTime.now());
-        adminUser.setCreatedBy("adminServer");
+        adminUser.setAccount("admi2n");
+        adminUser.setPassword("admin21");
+        adminUser.setStatus("regi2");
+        adminUser.setRole("part2");
+//        adminUser.setCreatedAt(LocalDateTime.now());
+//        adminUser.setCreatedBy("adminServer");
 
         AdminUser newAdminUser = adminUserRepository.save(adminUser);
         assertNotNull(newAdminUser);

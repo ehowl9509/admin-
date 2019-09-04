@@ -21,7 +21,7 @@ public class UserRepositoryTest extends Admin1ApplicationTests {
         String password = "password";
         String status = "nono";
         String email = "ehowl9509@naver.com";
-        String phoneNumber = "010-4941-9509";
+        String phoneNumber = "010-4921-9509";
         LocalDateTime registeredAt = LocalDateTime.now();
         LocalDateTime createdAt = LocalDateTime.now();
         String createdBy = "adminServer";
@@ -33,8 +33,8 @@ public class UserRepositoryTest extends Admin1ApplicationTests {
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
-        user.setCreatedAt(createdAt);
-        user.setCreatedBy(createdBy);
+//        user.setCreatedAt(createdAt);
+//        user.setCreatedBy(createdBy);
 
         User newuser = userRepository.save(user);
 
