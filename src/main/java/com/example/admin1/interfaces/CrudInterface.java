@@ -2,13 +2,13 @@ package com.example.admin1.interfaces;
 
 import com.example.admin1.model.network.Header;
 
-public interface CrudInterface {
+public interface CrudInterface<Req, Res> {
 
-    Header create();
+    Header<Res> create(Header<Req> request);
 
-    Header read(Long id);
+    Header<Res> read(Long id);
 
-    Header update();
+    Header<Res> update(Header<Req> request);
 
     Header delete(Long id);
 
