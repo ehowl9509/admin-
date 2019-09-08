@@ -1,4 +1,4 @@
-# Admim 전용
+# 고객정보, 상품, 주문내역 등 관리하는 관리자페이지 제작
 
 ### JPA, MYSQL 사용
 
@@ -6,10 +6,7 @@
 ### Junit테스트
 
 
-### CRUD로 인터페이스 설계
+### CRUD 인터페이스 설계
 
-### Additional Links
-These additional references should also help you:
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
-
+프로젝트 진행중.
