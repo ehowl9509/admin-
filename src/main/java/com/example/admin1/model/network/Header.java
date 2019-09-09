@@ -22,7 +22,7 @@ public class Header<T> {
     //부가설명
     private String description;
 
-    private T date;
+    private T data;
 
 
     //프론트  status 확인
@@ -39,6 +39,7 @@ public class Header<T> {
                 .transactionTime(LocalDateTime.now())
                 .resultCode("OK")
                 .description("OK")
+                .data(data)
                 .build());
     }
     //에러

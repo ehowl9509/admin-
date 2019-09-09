@@ -17,7 +17,7 @@ public class UserRepositoryTest extends Admin1ApplicationTests {
 
     @Test
     public void create(){
-        String account = "Test01";
+        String account = "Test04";
         String password = "password";
         String status = "nono";
         String email = "ehowl9509@naver.com";

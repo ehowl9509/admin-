@@ -1,4 +1,4 @@
-package com.example.admin1.controller;
+package com.example.admin1.controller.api;
 
 
 import com.example.admin1.interfaces.CrudInterface;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("/api/user")
 public class UserController implements CrudInterface<UserRequest, UserResponse> {
 
     @Autowired
     private UserService userService;
 
     @Override
-    @PostMapping
+    @PostMapping("")
     public Header<UserResponse> create(@RequestBody Header<UserRequest> request) {
         log.info("{}", request);
         return userService.create(request);
@@ -35,12 +35,12 @@ public class UserController implements CrudInterface<UserRequest, UserResponse> 
     @Override
     @PutMapping("")
     public Header<UserResponse> update(@RequestBody Header<UserRequest> request) {
-        return null;
+        return userService.update(request);
     }
 
     @Override
     @DeleteMapping("{id}")
     public Header delete(@PathVariable Long id) {
-        return null;
+        return userService.delete(id);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class UserService implements CrudInterface<UserRequest, UserResponse> {
@@ -21,7 +22,7 @@ public class UserService implements CrudInterface<UserRequest, UserResponse> {
     @Override
     public Header<UserResponse> create(Header<UserRequest> request) {
 
-        UserRequest userRequest = request.getDate();
+        UserRequest userRequest = request.getData();
 
         User user = User.builder()
                 .account(userRequest.getAccount())
@@ -53,7 +54,25 @@ public class UserService implements CrudInterface<UserRequest, UserResponse> {
     @Override
     public Header<UserResponse> update(Header<UserRequest> request) {
 
-        return null;
+        UserRequest userRequest = request.getData();
+
+        Optional<User> optional = userRepository.findById(userRequest.getId());
+
+        return optional.map(user -> {
+
+            user.setAccount(userRequest.getAccount())
+                    .setPassword(userRequest.getAccount())
+                    .setStatus(userRequest.getStatus())
+                    .setPhoneNumber(userRequest.getPhoneNumber())
+                    .setEmail(userRequest.getEmail())
+                    .setRegisteredAt(userRequest.getRegisteredAt())
+                    .setUnregisteredAt(userRequest.getUnregisteredAt());
+            return user;
+        })
+                .map(user -> userRepository.save(user))
+                .map(user -> response(user))
+                .orElseGet(
+                        ()->Header.ERROR("데이터없음"));
     }
 
 
@@ -61,7 +80,12 @@ public class UserService implements CrudInterface<UserRequest, UserResponse> {
     @Override
     public Header delete(Long id) {
 
-        return null;
+        Optional<User> optional = userRepository.findById(id);
+        return optional.map(user -> {
+            userRepository.delete(user);
+            return Header.OK();
+        })
+                .orElseGet(()->Header.ERROR("데이터없음"));
     }
 
 

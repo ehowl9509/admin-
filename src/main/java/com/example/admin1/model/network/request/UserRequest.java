@@ -26,7 +26,7 @@ public class UserRequest{
 
     private String phoneNumber;
 
-//    private LocalDateTime registeredAt;
-//
-//    private LocalDateTime unregisteredAt;
+    private LocalDateTime registeredAt;
+
+    private LocalDateTime unregisteredAt;
 }
