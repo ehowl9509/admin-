@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
@@ -23,7 +24,6 @@ public class ItemRepositoryTest extends Admin1ApplicationTests {
         item.setName("맥북");
         item.setTitle("apple");
         item.setContent("맥북");
-        item.setPrice(2000000);
         item.setBrandName("사과");
         item.setRegisteredAt(LocalDateTime.now());
         item.setCreatedAt(LocalDateTime.now());
