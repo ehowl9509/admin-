@@ -12,5 +12,4 @@ public interface CrudInterface<Req, Res> {
 
     Header delete(Long id);
 
-
 }
