@@ -7,7 +7,16 @@
 
  - 고객센터
     - 고객관리, 주문관리
-
+ #### Directory structure               
+![screensh](/Users/macbook/Downloads/img/pjt.png)
+ - component, config 
+    - JPA Auditing 구현 
+        - 생성자, 수정자 부분
+ - controller, api
+ - interfaces
+ - model
+ - repository
+ - service
 
 #### DB TABLE
  - AdminUser
