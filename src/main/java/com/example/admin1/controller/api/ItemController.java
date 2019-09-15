@@ -24,18 +24,19 @@ public class ItemController implements CrudInterface<ItemRequest, ItemResponse> 
     @Override
     @GetMapping("{id}")
     public Header<ItemResponse> read(@PathVariable Long id) {
-        return null;
+
+        return itemService.read(id);
     }
 
     @Override
     @PutMapping("")
     public Header<ItemResponse> update(@RequestBody Header<ItemRequest> request) {
-        return null;
+       return itemService.update(request);
     }
 
     @Override
     @DeleteMapping("{id}")
     public Header delete(@PathVariable Long id) {
-        return null;
+        return itemService.delete(id);
     }
 }
