@@ -11,32 +11,32 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/OrderGroup")
+@RequestMapping("/api/orderGroup")
 public class OrderGroupController implements CrudInterface<OrderGroupRequest, OrderGroupResponse> {
 
     @Autowired
     private OrderGroupService orderGroupService;
 
-    @PostMapping("")
     @Override
+    @PostMapping("")
     public Header<OrderGroupResponse> create(@RequestBody Header<OrderGroupRequest> request) {
         return orderGroupService.create(request);
     }
 
-    @GetMapping("{id}")
     @Override
+    @GetMapping("{id}")
     public Header<OrderGroupResponse> read(@PathVariable Long id) {
         return orderGroupService.read(id);
     }
 
-    @PutMapping("")
     @Override
+    @PutMapping("")
     public Header<OrderGroupResponse> update(@RequestBody Header<OrderGroupRequest> request) {
         return orderGroupService.update(request);
     }
 
-    @DeleteMapping("{id}")
     @Override
+    @DeleteMapping("{id}")
     public Header delete(@PathVariable Long id) {
         return orderGroupService.delete(id);
     }

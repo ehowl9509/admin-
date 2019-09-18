@@ -11,16 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 @Service
 public class OrderGroupService implements CrudInterface<OrderGroupRequest, OrderGroupResponse> {
 
-@Autowired
-private OrderGroupRepository orderGroupRepository;
+    @Autowired
+    private OrderGroupRepository orderGroupRepository;
 
-@Autowired
-private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public Header<OrderGroupResponse> create(Header<OrderGroupRequest> request) {
@@ -28,12 +29,14 @@ private UserRepository userRepository;
         OrderGroupRequest orderGroupRequest = request.getData();
         OrderGroup orderGroup = OrderGroup.builder()
                 .status(orderGroupRequest.getStatus())
+                .orderType(orderGroupRequest.getOrderType())
                 .revAddress(orderGroupRequest.getRevAddress())
                 .revName(orderGroupRequest.getRevName())
                 .paymentType(orderGroupRequest.getPaymentType())
                 .totalPrice(orderGroupRequest.getTotalPrice())
+                .totalQuantity(orderGroupRequest.getTotalQuantity())
                 .orderAt(LocalDateTime.now())
-                .user(userRepository.getOne(orderGroupRequest.getId()))
+                .user(userRepository.getOne(orderGroupRequest.getUserId()))
                 .build();
         OrderGroup newOrderGroup = orderGroupRepository.save(orderGroup);
 
@@ -41,25 +44,61 @@ private UserRepository userRepository;
         return response(newOrderGroup);
     }
 
+
     @Override
     public Header<OrderGroupResponse> read(Long id) {
-        return null;
+
+        return orderGroupRepository.findById(id)
+                .map(orderGroup -> response(orderGroup))
+                .orElseGet(() -> Header.ERROR("데이터없음"));
     }
+
+
 
     @Override
     public Header<OrderGroupResponse> update(Header<OrderGroupRequest> request) {
-        return null;
+
+        OrderGroupRequest orderGroupRequest = request.getData();
+        Optional<OrderGroup> optional = orderGroupRepository.findById(orderGroupRequest.getId());
+        return optional.map(orderGroup -> {
+            orderGroup.setStatus(orderGroupRequest.getStatus())
+                    .setOrderType(orderGroupRequest.getOrderType())
+                    .setRevAddress(orderGroupRequest.getRevAddress())
+                    .setRevName(orderGroupRequest.getRevName())
+                    .setPaymentType(orderGroupRequest.getPaymentType())
+                    .setTotalPrice(orderGroupRequest.getTotalPrice())
+                    .setTotalQuantity(orderGroupRequest.getTotalQuantity())
+                    .setOrderAt(orderGroupRequest.getOrderAt())
+                    .setArrivalDate(orderGroupRequest.getArrivalDate())
+                    .setUser(userRepository.getOne(orderGroupRequest.getId()));
+            return orderGroup;
+        })
+                .map(orderGroup -> orderGroupRepository.save(orderGroup))
+                .map(orderGroup -> response(orderGroup))
+                .orElseGet(
+                        () -> Header.ERROR("데이터없음"));
+
     }
 
     @Override
     public Header delete(Long id) {
-        return null;
+
+        return orderGroupRepository.findById(id)
+                .map(orderGroup -> {
+                    orderGroupRepository.delete(orderGroup);
+                    return Header.OK();
+                })
+                .orElseGet(() -> Header.ERROR("데이터없음"));
+
     }
 
-    private Header<OrderGroupResponse> response(OrderGroup orderGroup){
+
+    private Header<OrderGroupResponse> response(OrderGroup orderGroup) {
+
         OrderGroupResponse orderGroupResponse = OrderGroupResponse.builder()
                 .id(orderGroup.getId())
                 .status(orderGroup.getStatus())
+                .orderType(orderGroup.getOrderType())
                 .revAddress(orderGroup.getRevAddress())
                 .revName(orderGroup.getRevName())
                 .paymentType(orderGroup.getPaymentType())

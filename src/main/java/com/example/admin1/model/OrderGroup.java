@@ -24,6 +24,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class OrderGroup {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
