@@ -18,16 +18,15 @@
     - controller, service에 사용하는 CRUD인터페이스
     
     
+~~~
+    Header<Res> create(Header<Req> request);
     
+    Header<Res> read(Long id);
     
-Header<Res> create(Header<Req> request);
+    Header<Res> update(Header<Req> request);
     
-Header<Res> read(Long id);
-    
-eader<Res> update(Header<Req> request);
-    
-Header delete(Long id);
-    
+    Header delete(Long id);
+~~~
     
     
  - model
