@@ -1,6 +1,7 @@
 package com.example.admin1.service;
 
 import com.example.admin1.interfaces.CrudInterface;
+import com.example.admin1.model.OrderDetail;
 import com.example.admin1.model.OrderGroup;
 import com.example.admin1.model.network.Header;
 import com.example.admin1.model.network.request.OrderGroupRequest;
@@ -9,6 +10,7 @@ import com.example.admin1.repository.OrderGroupRepository;
 import com.example.admin1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -49,7 +51,7 @@ public class OrderGroupService implements CrudInterface<OrderGroupRequest, Order
     public Header<OrderGroupResponse> read(Long id) {
 
         return orderGroupRepository.findById(id)
-                .map(orderGroup -> response(orderGroup))
+                .map(this::response)
                 .orElseGet(() -> Header.ERROR("데이터없음"));
     }
 

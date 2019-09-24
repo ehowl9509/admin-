@@ -1,6 +1,7 @@
 package com.example.admin1.repository;
 
 import com.example.admin1.Admin1ApplicationTests;
+import com.example.admin1.model.OrderDetail;
 import com.example.admin1.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class UserRepositoryTest extends Admin1ApplicationTests {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
     @Test
     public void create(){
         String account = "Test04";
@@ -42,27 +45,4 @@ public class UserRepositoryTest extends Admin1ApplicationTests {
     }
 
 
-    @Test
-    @Transactional
-    public void read(){
-        User user = userRepository.findByPhoneNumberOrderByIdDesc("010-4941-9509");
-        if(user != null) {
-            user.getOrderGroupList().stream().forEach(orderGroup -> {
-                System.out.println("수령인" + orderGroup.getRevName());
-                System.out.println(orderGroup.getStatus());
-                System.out.println(orderGroup.getArrivalDate());
-
-                orderGroup.getOrderDetailList().forEach(orderDetail -> {
-                    orderDetail.getStatus();
-                    orderDetail.getArrivalDate();
-                    orderDetail.getItem().getPartner().getCallCenter();
-                    orderDetail.getItem().getPartner().getCategory().getTitle();
-                });
-
-            });
-            assertNotNull(user);
-
-        }
-
-    }
 }

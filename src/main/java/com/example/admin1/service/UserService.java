@@ -44,9 +44,7 @@ public class UserService implements CrudInterface<UserRequest, UserResponse> {
 
         return userRepository.findById(id)
                 .map(user -> response(user))
-                .orElseGet(
-                        () -> Header.ERROR("데이터없음")
-                );
+                .orElseGet(() -> Header.ERROR("데이터없음"));
     }
 
 

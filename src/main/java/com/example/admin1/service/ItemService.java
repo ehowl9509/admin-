@@ -45,9 +45,7 @@ public class ItemService implements CrudInterface<ItemRequest, ItemResponse> {
 
         return itemRepository.findById(id)
                 .map(item -> response(item))
-                .orElseGet(
-                        () -> Header.ERROR("데이터없음")
-                );
+                .orElse(Header.ERROR("데이넡ㄴㄴ"));
     }
 
     @Override

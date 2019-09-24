@@ -2,6 +2,8 @@ package com.example.admin1.repository;
 
 import com.example.admin1.Admin1ApplicationTests;
 import com.example.admin1.model.OrderDetail;
+import com.example.admin1.model.network.Header;
+import com.example.admin1.model.network.request.OrderDetailRequest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
