@@ -7,8 +7,11 @@
 
  - 고객센터
     - 고객관리, 주문관리
- #### Directory structure               
-![pjt](/Users/macbook/Downloads/img/pjt.png)
+ #### Directory structure
+ 
+<img width="502" alt="pjt" src="https://user-images.githubusercontent.com/48824988/65491137-6f720380-dee9-11e9-958e-8420d28a53fc.png">
+
+
  - component, config 
     - JPA Auditing 구현 
         - 생성자, 수정자 부문
