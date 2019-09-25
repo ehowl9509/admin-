@@ -9,9 +9,6 @@
     - 고객관리, 주문관리
  #### Directory structure
  
-<img width="502" alt="pjt" src="https://user-images.githubusercontent.com/48824988/65491137-6f720380-dee9-11e9-958e-8420d28a53fc.png">
-
-
  - component, config 
     - JPA Auditing 구현 
         - 생성자, 수정자 부문
@@ -31,14 +28,56 @@
     Header delete(Long id);
 ~~~
     
-    
+ 
  - model
-    - Entity 부문
+    - network
+        - request 
+            - Entity의 request
+        - response
+            - Entity의 response
+        - Header.class (Restlet Client 테스트)
+~~~
+
+    응답코드
+    private String resultCode;
+
+    부가설명
+    private String description;
+
+    private T data;
+    
+    프론트  status 확인
+    public static <T> Header<T> OK(){
+        return (Header.<T>builder()
+                .transactionTime(LocalDateTime.now())
+                .resultCode("OK")
+                .description("OK")
+                .build());
+    }
+    데이터 부분 응답 확인
+    public static <T> Header<T> OK(T data){
+        return (Header.<T>builder()
+                .transactionTime(LocalDateTime.now())
+                .resultCode("OK")
+                .description("OK")
+                .data(data)
+                .build());
+    }
+    에러
+    public static <T> Header<T> ERROR(String description){
+        return (Header.<T>builder()
+                .transactionTime(LocalDateTime.now())
+                .resultCode("ERROR")
+                .description(description)
+                .build());
+    }
+~~~
  - repository
     - 각Entity JpaRepository 모음
  - service
+    - Service 구현
 
-#### DB TABLE 
+#### DB TABLE 연관관게
  - AdminUser
  - Category
     - Partner 1:N 
