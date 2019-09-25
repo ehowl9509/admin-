@@ -73,13 +73,13 @@ public class ItemService implements CrudInterface<ItemRequest, ItemResponse> {
 
     @Override
     public Header delete(Long id) {
+        return itemRepository.findById(id)
+                .map(item -> {
+                    itemRepository.delete(item);
+                    return Header.OK();
+                })
+                .orElseGet(() -> Header.ERROR("데이터없음"));
 
-        Optional<Item> optional = itemRepository.findById(id);
-        return optional.map(user -> {
-            itemRepository.delete(user);
-            return Header.OK();
-        })
-                .orElseGet(()->Header.ERROR("데이터없음"));
     }
 
     private Header<ItemResponse> response(Item item){
