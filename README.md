@@ -1,5 +1,13 @@
 ## 관리자 REST-API
 
+ #### SKILL
+ - Spring boot
+ - JPA
+ - MYSQL
+
+ #### Tool
+ - Intelli J
+ - Restlet Client
 
 #### Function
  - 관리자
@@ -36,6 +44,9 @@
         - response
             - Entity의 response
         - Header.class (Restlet Client 테스트)
+        
+
+
 ~~~
 
     응답코드
@@ -72,6 +83,21 @@
                 .build());
     }
 ~~~
+
+ - Entity
+    - Lombok 어노테이션, JPA Auditing, Builder, Accessors사용
+    
+~~~
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@EntityListeners(AuditingEntityListener.class) //by 감시
+@Builder
+@Accessors(chain = true)
+~~~
+
+
  - repository
     - 각Entity JpaRepository 모음
  - service
@@ -94,13 +120,5 @@
 
 
 
- #### SKILL
- - Spring boot
- - JPA
- - MYSQL
 
- #### Tool
- - Intelli J
- - Restlet Client
 
-프로젝트 진행중.
