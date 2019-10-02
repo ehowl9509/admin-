@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/Category")
+@RequestMapping("/api/category")
 public class CategoryController implements CrudInterface<CategoryRequest, CategoryResponse> {
     @Autowired
     private CategoryService categoryService;
