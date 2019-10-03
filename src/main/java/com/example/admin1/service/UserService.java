@@ -3,6 +3,7 @@ package com.example.admin1.service;
 
 import com.example.admin1.interfaces.CrudInterface;
 import com.example.admin1.model.User;
+import com.example.admin1.model.enumd.UserStatus;
 import com.example.admin1.model.network.Header;
 import com.example.admin1.model.network.request.UserRequest;
 import com.example.admin1.model.network.response.UserResponse;
@@ -27,7 +28,7 @@ public class UserService implements CrudInterface<UserRequest, UserResponse> {
         User user = User.builder()
                 .account(userRequest.getAccount())
                 .password(userRequest.getPassword())
-                .status("REGISTERD")
+                .status(UserStatus.RESISTERED)
                 .phoneNumber(userRequest.getPhoneNumber())
                 .email(userRequest.getEmail())
                 .registeredAt(LocalDateTime.now())

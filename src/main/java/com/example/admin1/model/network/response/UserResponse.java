@@ -1,6 +1,7 @@
 package com.example.admin1.model.network.response;
 
 
+import com.example.admin1.model.enumd.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class UserResponse {
 
     private String password;
 
-    private String status;
+    private UserStatus status;
 
     private String email;
 
