@@ -44,7 +44,8 @@
         - response
             - Entity의 response
         - Header.class (Restlet Client 테스트)
-        
+    - enumd
+        - 각Entity enum설정    
 
 
 ~~~
