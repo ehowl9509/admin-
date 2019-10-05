@@ -1,5 +1,6 @@
 package com.example.admin1.model.network.response;
 
+import com.example.admin1.model.enumd.OrderType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class OrderGroupResponse {
 
     private String status;
 
-    private String orderType;
+    private OrderType orderType;
 
     private String revAddress;
 
