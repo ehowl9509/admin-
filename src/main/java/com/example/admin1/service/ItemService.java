@@ -45,7 +45,7 @@ public class ItemService implements CrudInterface<ItemRequest, ItemResponse> {
 
         return itemRepository.findById(id)
                 .map(item -> response(item))
-                .orElse(Header.ERROR("데이넡ㄴㄴ"));
+                .orElse(Header.ERROR("데이터없음"));
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ItemService implements CrudInterface<ItemRequest, ItemResponse> {
     private Header<ItemResponse> response(Item item){
         ItemResponse itemResponse = ItemResponse.builder()
                 .id(item.getId())
-                .status(item.getName())
+                .status(item.getStatus())
                 .title(item.getTitle())
                 .content(item.getContent())
                 .price(item.getPrice())
