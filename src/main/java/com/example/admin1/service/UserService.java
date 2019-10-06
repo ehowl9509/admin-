@@ -28,7 +28,7 @@ public class UserService implements CrudInterface<UserRequest, UserResponse> {
         User user = User.builder()
                 .account(userRequest.getAccount())
                 .password(userRequest.getPassword())
-                .status(UserStatus.RESISTERED)
+                .status(userRequest.getStatus())
                 .phoneNumber(userRequest.getPhoneNumber())
                 .email(userRequest.getEmail())
                 .registeredAt(LocalDateTime.now())
