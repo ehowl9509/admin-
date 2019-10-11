@@ -1,6 +1,7 @@
 package com.example.admin1.model.network.request;
 
 
+import com.example.admin1.model.enumd.PartnerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class PartnerRequest {
 
     private String name;
 
-    private String status;
+    private PartnerStatus status;
 
     private String address;
 

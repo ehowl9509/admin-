@@ -1,5 +1,6 @@
 package com.example.admin1.model.network.response;
 
+import com.example.admin1.model.enumd.PartnerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class PartnerResponse {
 
     private String name;
 
-    private String status;
+    private PartnerStatus status;
 
     private String address;
 
